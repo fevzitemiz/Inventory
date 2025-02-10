@@ -18,7 +18,7 @@ Backend Bilgileri
 - JWT Auth
 - CodeFirst Yaklaşımı
 
-Fronend Bilgileri
+Frontend Bilgileri
 
 - Angular ile geliştirildi.
 - NG Zorro UI Componentleri kullanışmıştır
