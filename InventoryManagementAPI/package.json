@@ -1,0 +1,31 @@
+{
+  "name": "inventorymanagement",
+  "version": "1.0.0",
+  "description": "Envanter Yönetim Sistemi",
+  "license": "ISC",
+  "author": "Fevzi TEMİZ",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": " node swagger.js && nodemon src/index.js",
+    "test": "nodemon src/index.js",
+    "openapi": "java -jar openapi-generator-cli-6.2.0.jar generate -i http://localhost:3000/swagger -g typescript-angular --type-mappings=DateTime=Date --additional-properties=modelPropertyNaming=camelCase -o ./src/openapi/services/"
+  },
+  "dependencies": {
+    "argon2": "^0.41.1",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-validator": "^7.2.1",
+    "fs": "^0.0.1-security",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.9",
+    "pg": "^8.13.1",
+    "sequelize": "^6.37.5",
+    "swagger-autogen": "^2.23.7",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  }
+}

@@ -1,0 +1,3302 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Seyir Füzeleri Sistem Mühendisliği Envanter Uygulaması API",
+    "description": "NodeJS - ExpressJS API Docs / Fevzi TEMİZ"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "securityDefinitions": {
+    "JWT": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/login": {
+      "post": {
+        "tags": [
+          "Account"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "description": "Login Payload Bilgileri.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoginModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/LoginResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/brands/": {
+      "get": {
+        "tags": [
+          "Brands"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/BrandGetAllResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/brand/{id}": {
+      "get": {
+        "tags": [
+          "Brands"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/BrandGetByIdResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Brands"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/BrandDeleteResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/brand/": {
+      "post": {
+        "tags": [
+          "Brands"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BrandCreateModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/BrandCreateResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Brands"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BrandUpdateModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/BrandUpdateResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/employees/": {
+      "get": {
+        "tags": [
+          "Employee"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/EmployeeGetAllResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/employee/{id}": {
+      "get": {
+        "tags": [
+          "Employee"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/EmployeeGetByIdResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Employee"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/EmployeeDeleteResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/employee/": {
+      "post": {
+        "tags": [
+          "Employee"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EmployeeCreateModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/EmployeeCreateResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Employee"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EmployeeUpdateModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/EmployeeUpdateResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/inventory-records/": {
+      "get": {
+        "tags": [
+          "InventoryRecord"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/InventoryRecordGetAllResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/inventory-record/{id}": {
+      "get": {
+        "tags": [
+          "InventoryRecord"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/InventoryRecordGetByIdResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "InventoryRecord"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/InventoryRecordDeleteResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/inventory-record/": {
+      "post": {
+        "tags": [
+          "InventoryRecord"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InventoryRecordCreateModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/InventoryRecordCreateResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "InventoryRecord"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InventoryRecordUpdateModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/InventoryRecordUpdateResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/items/": {
+      "get": {
+        "tags": [
+          "Item"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ItemGetAllResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/item/{id}": {
+      "get": {
+        "tags": [
+          "Item"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ItemGetByIdResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Item"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ItemDeleteResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/item/": {
+      "post": {
+        "tags": [
+          "Item"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ItemCreateModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ItemCreateResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Item"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ItemUpdateModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ItemUpdateResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/positions/": {
+      "get": {
+        "tags": [
+          "Position"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PositionGetAllResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/position/{id}": {
+      "get": {
+        "tags": [
+          "Position"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PositionGetByIdResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Position"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PositionDeleteResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/position/": {
+      "post": {
+        "tags": [
+          "Position"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PositionCreateModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PositionCreateResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Position"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PositionUpdateModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PositionUpdateResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/roles/": {
+      "get": {
+        "tags": [
+          "Role"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/RoleGetAllResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/role/{id}": {
+      "get": {
+        "tags": [
+          "Role"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/RoleGetByIdResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Role"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/RoleDeleteResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/role/": {
+      "post": {
+        "tags": [
+          "Role"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RoleCreateModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/RoleCreateResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Role"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RoleUpdateModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/RoleUpdateResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/softwares/": {
+      "get": {
+        "tags": [
+          "Software"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/SoftwareGetAllResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/software/{id}": {
+      "get": {
+        "tags": [
+          "Software"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/SoftwareGetByIdResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Software"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/SoftwareDeleteResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/software/": {
+      "post": {
+        "tags": [
+          "Software"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SoftwareCreateModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/SoftwareCreateResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Software"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SoftwareUpdateModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/SoftwareUpdateResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/swagger": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/titles/": {
+      "get": {
+        "tags": [
+          "Title"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/TitleGetAllResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/title/{id}": {
+      "get": {
+        "tags": [
+          "Title"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/TitleGetByIdResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Title"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/TitleDeleteResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/title/": {
+      "post": {
+        "tags": [
+          "Title"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TitleCreateModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/TitleCreateResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Title"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TitleUpdateModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/TitleUpdateResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/type-of-items/": {
+      "get": {
+        "tags": [
+          "TypeOfItem"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/TypeOfItemGetAllResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/type-of-item/{id}": {
+      "get": {
+        "tags": [
+          "TypeOfItem"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/TypeOfItemGetByIdResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "TypeOfItem"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/TypeOfItemDeleteResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/type-of-item/": {
+      "post": {
+        "tags": [
+          "TypeOfItem"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TypeOfItemCreateModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/TypeOfItemCreateResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "TypeOfItem"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TypeOfItemUpdateModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/TypeOfItemUpdateResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/users/": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UserGetAllResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/user/{id}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UserGetByIdResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UserDeleteResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/user/updatePassword": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PasswordUpdateModel"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PasswordUpdateResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/user/": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserCreateModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UserCreateResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserUpdateModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UserUpdateResponse"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "LoginModel": {
+      "type": "object",
+      "properties": {
+        "userName": {
+          "type": "string",
+          "example": "string"
+        },
+        "password": {
+          "type": "string",
+          "example": "string"
+        }
+      },
+      "required": [
+        "userName",
+        "password"
+      ]
+    },
+    "BrandCreateModel": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "example": "string"
+        }
+      },
+      "required": [
+        "description"
+      ]
+    },
+    "BrandUpdateModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 0
+        },
+        "description": {
+          "type": "string",
+          "example": "string"
+        }
+      },
+      "required": [
+        "id",
+        "description"
+      ]
+    },
+    "EmployeeCreateModel": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "string"
+        },
+        "surName": {
+          "type": "string",
+          "example": "string"
+        },
+        "email": {
+          "type": "string",
+          "example": "string"
+        },
+        "gsm": {
+          "type": "string",
+          "example": "string"
+        },
+        "titleId": {
+          "type": "number",
+          "example": 0
+        },
+        "positionId": {
+          "type": "number",
+          "example": 0
+        }
+      },
+      "required": [
+        "name",
+        "surName",
+        "email",
+        "gsm",
+        "titleId",
+        "positionId"
+      ]
+    },
+    "EmployeeUpdateModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 0
+        },
+        "name": {
+          "type": "string",
+          "example": "string"
+        },
+        "surName": {
+          "type": "string",
+          "example": "string"
+        },
+        "email": {
+          "type": "string",
+          "example": "string"
+        },
+        "gsm": {
+          "type": "string",
+          "example": "string"
+        },
+        "titleId": {
+          "type": "number",
+          "example": 0
+        },
+        "positionId": {
+          "type": "number",
+          "example": 0
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "surName",
+        "email",
+        "gsm",
+        "titleId",
+        "positionId"
+      ]
+    },
+    "InventoryRecordCreateModel": {
+      "type": "object",
+      "properties": {
+        "deliveryDate": {
+          "type": "string",
+          "example": "2025-01-01"
+        },
+        "returnDate": {
+          "type": "string",
+          "example": "string"
+        },
+        "description": {
+          "type": "string",
+          "example": "string"
+        },
+        "itemId": {
+          "type": "number",
+          "example": 0
+        },
+        "deliveredByEmployeeId": {
+          "type": "number",
+          "example": 0
+        },
+        "deliveredToEmployeeId": {
+          "type": "number",
+          "example": 0
+        }
+      },
+      "required": [
+        "deliveryDate",
+        "returnDate",
+        "description",
+        "itemId",
+        "deliveredByEmployeeId",
+        "deliveredToEmployeeId"
+      ]
+    },
+    "InventoryRecordUpdateModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 0
+        },
+        "deliveryDate": {
+          "type": "string",
+          "example": "2025-01-01"
+        },
+        "returnDate": {
+          "type": "string",
+          "example": "string"
+        },
+        "description": {
+          "type": "string",
+          "example": "string"
+        },
+        "itemId": {
+          "type": "number",
+          "example": 0
+        },
+        "deliveredByEmployeeId": {
+          "type": "number",
+          "example": 0
+        },
+        "deliveredToEmployeeId": {
+          "type": "number",
+          "example": 0
+        }
+      },
+      "required": [
+        "id",
+        "deliveryDate",
+        "returnDate",
+        "description",
+        "itemId",
+        "deliveredByEmployeeId",
+        "deliveredToEmployeeId"
+      ]
+    },
+    "ItemCreateModel": {
+      "type": "object",
+      "properties": {
+        "model": {
+          "type": "string",
+          "example": "string"
+        },
+        "serialNumber": {
+          "type": "string",
+          "example": "string"
+        },
+        "eRegistryNumber": {
+          "type": "string",
+          "example": "string"
+        },
+        "description": {
+          "type": "string",
+          "example": "string"
+        },
+        "typeOfItemId": {
+          "type": "number",
+          "example": 0
+        },
+        "brandId": {
+          "type": "number",
+          "example": 0
+        }
+      },
+      "required": [
+        "model",
+        "serialNumber",
+        "eRegistryNumber",
+        "description",
+        "typeOfItemId",
+        "brandId"
+      ]
+    },
+    "ItemUpdateModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 0
+        },
+        "model": {
+          "type": "string",
+          "example": "string"
+        },
+        "serialNumber": {
+          "type": "string",
+          "example": "string"
+        },
+        "eRegistryNumber": {
+          "type": "string",
+          "example": "string"
+        },
+        "description": {
+          "type": "string",
+          "example": "string"
+        },
+        "typeOfItemId": {
+          "type": "number",
+          "example": 0
+        },
+        "brandId": {
+          "type": "number",
+          "example": 0
+        }
+      },
+      "required": [
+        "id",
+        "model",
+        "serialNumber",
+        "eRegistryNumber",
+        "description",
+        "typeOfItemId",
+        "brandId"
+      ]
+    },
+    "PositionCreateModel": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "example": "string"
+        }
+      },
+      "required": [
+        "description"
+      ]
+    },
+    "PositionUpdateModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 0
+        },
+        "description": {
+          "type": "string",
+          "example": "string"
+        }
+      },
+      "required": [
+        "id",
+        "description"
+      ]
+    },
+    "RoleCreateModel": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "example": "string"
+        }
+      },
+      "required": [
+        "description"
+      ]
+    },
+    "RoleUpdateModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 0
+        },
+        "description": {
+          "type": "string",
+          "example": "string"
+        }
+      },
+      "required": [
+        "id",
+        "description"
+      ]
+    },
+    "SoftwareCreateModel": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "string"
+        },
+        "companyEmail": {
+          "type": "string",
+          "example": "string"
+        },
+        "companyPhone": {
+          "type": "string",
+          "example": "string"
+        },
+        "description": {
+          "type": "string",
+          "example": "string"
+        },
+        "lastAgreementDate": {
+          "type": "string",
+          "example": "2025-01-01"
+        },
+        "nextAgreementDate": {
+          "type": "string",
+          "example": "2025-01-01"
+        },
+        "employeeId": {
+          "type": "number",
+          "example": 0
+        }
+      },
+      "required": [
+        "name",
+        "companyEmail",
+        "companyPhone",
+        "description",
+        "lastAgreementDate",
+        "nextAgreementDate",
+        "employeeId"
+      ]
+    },
+    "SoftwareUpdateModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 0
+        },
+        "name": {
+          "type": "string",
+          "example": "string"
+        },
+        "companyEmail": {
+          "type": "string",
+          "example": "string"
+        },
+        "companyPhone": {
+          "type": "string",
+          "example": "string"
+        },
+        "description": {
+          "type": "string",
+          "example": "string"
+        },
+        "lastAgreementDate": {
+          "type": "string",
+          "example": "2025-01-01"
+        },
+        "nextAgreementDate": {
+          "type": "string",
+          "example": "2025-01-01"
+        },
+        "employeeId": {
+          "type": "number",
+          "example": 0
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "companyEmail",
+        "companyPhone",
+        "description",
+        "lastAgreementDate",
+        "nextAgreementDate",
+        "employeeId"
+      ]
+    },
+    "TitleCreateModel": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "example": "string"
+        }
+      },
+      "required": [
+        "description"
+      ]
+    },
+    "TitleUpdateModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 0
+        },
+        "description": {
+          "type": "string",
+          "example": "string"
+        }
+      },
+      "required": [
+        "id",
+        "description"
+      ]
+    },
+    "TypeOfItemCreateModel": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "example": "string"
+        }
+      },
+      "required": [
+        "description"
+      ]
+    },
+    "TypeOfItemUpdateModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 0
+        },
+        "description": {
+          "type": "string",
+          "example": "string"
+        }
+      },
+      "required": [
+        "id",
+        "description"
+      ]
+    },
+    "UserCreateModel": {
+      "type": "object",
+      "properties": {
+        "userName": {
+          "type": "string",
+          "example": "string"
+        },
+        "isActive": {
+          "type": "boolean",
+          "example": true
+        },
+        "roleId": {
+          "type": "number",
+          "example": 0
+        },
+        "employeeId": {
+          "type": "number",
+          "example": 0
+        },
+        "password": {
+          "type": "string",
+          "example": "string"
+        }
+      },
+      "required": [
+        "userName",
+        "isActive",
+        "roleId",
+        "employeeId",
+        "password"
+      ]
+    },
+    "UserUpdateModel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 0
+        },
+        "userName": {
+          "type": "string",
+          "example": "string"
+        },
+        "isActive": {
+          "type": "boolean",
+          "example": true
+        },
+        "roleId": {
+          "type": "number",
+          "example": 0
+        }
+      },
+      "required": [
+        "id",
+        "userName",
+        "isActive",
+        "roleId"
+      ]
+    },
+    "PasswordUpdateModel": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "number",
+          "example": 0
+        },
+        "passwordOld": {
+          "type": "string",
+          "example": "string"
+        },
+        "passwordNew": {
+          "type": "string",
+          "example": "string"
+        }
+      },
+      "required": [
+        "userId",
+        "passwordOld",
+        "passwordNew"
+      ]
+    },
+    "LoginResponse": {
+      "type": "object",
+      "properties": {
+        "authToken": {
+          "type": "string",
+          "example": "string"
+        },
+        "refreshToken": {
+          "type": "string",
+          "example": "string"
+        },
+        "expiresIn": {
+          "type": "string",
+          "example": "string"
+        }
+      },
+      "required": [
+        "authToken",
+        "refreshToken",
+        "expiresIn"
+      ]
+    },
+    "Brands": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 0
+        },
+        "description": {
+          "type": "string",
+          "example": "string"
+        }
+      },
+      "required": [
+        "id",
+        "description"
+      ]
+    },
+    "BrandGetAllResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Brands"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "BrandGetByIdResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Brands"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "BrandCreateResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Brands"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "BrandUpdateResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Brands"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "BrandDeleteResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "boolean",
+          "example": true
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "Positions": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 0
+        },
+        "description": {
+          "type": "string",
+          "example": "string"
+        }
+      },
+      "required": [
+        "id",
+        "description"
+      ]
+    },
+    "PositionGetAllResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Positions"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "PositionGetByIdResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Positions"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "PositionCreateResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Positions"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "PositionUpdateResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Positions"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "PositionDeleteResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "boolean",
+          "example": true
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "Employees": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 0
+        },
+        "name": {
+          "type": "string",
+          "example": "string"
+        },
+        "surName": {
+          "type": "string",
+          "example": "string"
+        },
+        "email": {
+          "type": "string",
+          "example": "string"
+        },
+        "gsm": {
+          "type": "string",
+          "example": "string"
+        },
+        "position": {
+          "$ref": "#/definitions/Positions"
+        },
+        "title": {
+          "$ref": "#/definitions/Titles"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "surName",
+        "email",
+        "gsm",
+        "position",
+        "title"
+      ]
+    },
+    "EmployeeGetAllResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Employees"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "EmployeeGetByIdResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Employees"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "EmployeeCreateResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Employees"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "EmployeeUpdateResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Employees"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "EmployeeDeleteResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "boolean",
+          "example": true
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "Titles": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 0
+        },
+        "description": {
+          "type": "string",
+          "example": "string"
+        }
+      },
+      "required": [
+        "id",
+        "description"
+      ]
+    },
+    "TitleGetAllResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Titles"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "TitleGetByIdResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Titles"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "TitleCreateResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Titles"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "TitleUpdateResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Titles"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "TitleDeleteResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "boolean",
+          "example": true
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "Roles": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 0
+        },
+        "description": {
+          "type": "string",
+          "example": "string"
+        }
+      },
+      "required": [
+        "id",
+        "description"
+      ]
+    },
+    "RoleGetAllResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roles"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "RoleGetByIdResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roles"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "RoleCreateResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roles"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "RoleUpdateResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Roles"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "RoleDeleteResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "boolean",
+          "example": true
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "Items": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 0
+        },
+        "model": {
+          "type": "string",
+          "example": "string"
+        },
+        "serialNumber": {
+          "type": "string",
+          "example": "string"
+        },
+        "eRegistryNumber": {
+          "type": "string",
+          "example": "string"
+        },
+        "description": {
+          "type": "string",
+          "example": "string"
+        },
+        "brand": {
+          "$ref": "#/definitions/Brands"
+        },
+        "typeOfItem": {
+          "$ref": "#/definitions/TypeOfItems"
+        }
+      },
+      "required": [
+        "id",
+        "model",
+        "serialNumber",
+        "eRegistryNumber",
+        "description",
+        "brand",
+        "typeOfItem"
+      ]
+    },
+    "ItemGetAllResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Items"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "ItemGetByIdResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Items"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "ItemCreateResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Items"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "ItemUpdateResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Items"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "ItemDeleteResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "boolean",
+          "example": true
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "TypeOfItems": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 0
+        },
+        "description": {
+          "type": "string",
+          "example": "string"
+        }
+      },
+      "required": [
+        "id",
+        "description"
+      ]
+    },
+    "TypeOfItemGetAllResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TypeOfItems"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "TypeOfItemGetByIdResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TypeOfItems"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "TypeOfItemCreateResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TypeOfItems"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "TypeOfItemUpdateResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TypeOfItems"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "TypeOfItemDeleteResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "boolean",
+          "example": true
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "Softwares": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 0
+        },
+        "name": {
+          "type": "string",
+          "example": "string"
+        },
+        "companyEmail": {
+          "type": "string",
+          "example": "string"
+        },
+        "companyPhone": {
+          "type": "string",
+          "example": "string"
+        },
+        "description": {
+          "type": "string",
+          "example": "string"
+        },
+        "lastAgreementDate": {
+          "type": "string",
+          "example": "string"
+        },
+        "nextAgreementDate": {
+          "type": "string",
+          "example": "string"
+        },
+        "employee": {
+          "$ref": "#/definitions/Employees"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "companyEmail",
+        "companyPhone",
+        "description",
+        "lastAgreementDate",
+        "nextAgreementDate",
+        "employee"
+      ]
+    },
+    "SoftwareGetAllResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Softwares"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "SoftwareGetByIdResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Softwares"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "SoftwareCreateResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Softwares"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "SoftwareUpdateResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Softwares"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "SoftwareDeleteResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "boolean",
+          "example": true
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "Users": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 0
+        },
+        "userName": {
+          "type": "string",
+          "example": "string"
+        },
+        "isActive": {
+          "type": "boolean",
+          "example": true
+        },
+        "role": {
+          "$ref": "#/definitions/Roles"
+        },
+        "employee": {
+          "$ref": "#/definitions/Employees"
+        }
+      },
+      "required": [
+        "id",
+        "userName",
+        "isActive",
+        "role",
+        "employee"
+      ]
+    },
+    "UserGetAllResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Users"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "UserGetByIdResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Users"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "UserCreateResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Users"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "UserUpdateResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Users"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "PasswordUpdateResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Users"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "UserDeleteResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "boolean",
+          "example": true
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "InventoryRecords": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "example": 0
+        },
+        "deliveryDate": {
+          "type": "string",
+          "example": "string"
+        },
+        "returnDate": {
+          "type": "string",
+          "example": "string"
+        },
+        "description": {
+          "type": "string",
+          "example": "string"
+        },
+        "deliveredByEmployee": {
+          "$ref": "#/definitions/Employees"
+        },
+        "item": {
+          "$ref": "#/definitions/Items"
+        },
+        "deliveredToEmployee": {
+          "$ref": "#/definitions/Employees"
+        }
+      },
+      "required": [
+        "id",
+        "deliveryDate",
+        "returnDate",
+        "description",
+        "deliveredByEmployee",
+        "item",
+        "deliveredToEmployee"
+      ]
+    },
+    "InventoryRecordGetAllResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InventoryRecords"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "InventoryRecordGetByIdResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InventoryRecords"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "InventoryRecordCreateResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InventoryRecords"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "InventoryRecordUpdateResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InventoryRecords"
+          }
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    },
+    "InventoryRecordDeleteResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "data": {
+          "type": "boolean",
+          "example": true
+        },
+        "errorDescription": {}
+      },
+      "required": [
+        "status",
+        "data",
+        "errorDescription"
+      ]
+    }
+  },
+  "security": [
+    {
+      "JWT": []
+    }
+  ]
+}

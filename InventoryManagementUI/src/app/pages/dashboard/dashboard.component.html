@@ -1,0 +1,84 @@
+<nz-layout class="app-layout">
+  <nz-sider class="menu-sidebar" nzCollapsible nzWidth="256px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null">
+    <div class="sidebar-logo">
+      <a href="#">
+        <img src="assets/img/logo.png" alt="logo">
+        <h1>Envanter Takip</h1><br>
+
+      </a>
+    </div>
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsedMain">
+      <li nz-submenu nzOpen nzTitle="Moduller" nzIcon="dashboard">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/inventory-records">Envanter Kayıtları</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/items">Ürünler/Malzemeler</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="softwares">Yazılımlar/Lisanslar</a>
+          </li>
+        </ul>
+      </li>
+      <ng-container *ngIf="isAdmin">
+        <li nz-submenu nzOpen nzTitle="Tanım Yönetimi" nzIcon="form">
+          <ul>
+            <li routerLink="/brands" nz-menu-item nzMatchRouter><a>Marka Tanımı</a></li>
+            <li routerLink="/types-of-item" nz-menu-item nzMatchRouter><a>Ürün Tip Tanımı</a></li>
+          </ul>
+        </li>
+      </ng-container>
+
+      <ng-container *ngIf="isAdmin">
+        <li nz-submenu nzOpen nzTitle="Kullanıcı Yönetimi" nzIcon="usergroup-add">
+          <ul>
+            <li routerLink="/employees" nz-menu-item nzMatchRouter><a>Personeller</a></li>
+            <li routerLink="/users" nz-menu-item nzMatchRouter><a>Kullanıcılar</a></li>
+            <li routerLink="/positions" nz-menu-item nzMatchRouter><a>Görev Tanımı</a></li>
+            <li routerLink="/titles" nz-menu-item nzMatchRouter><a>Ünvan Tanımı</a></li>
+          </ul>
+        </li>
+      </ng-container>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <div class="app-header">
+        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+          <nz-icon class="trigger" [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'" />
+        </span>
+
+        <!-- <span class="rigth-menu"><a [routerLink]="" (click)="logout()"><nz-icon style="font-size: 24px" nzType="logout"
+              nzTheme="outline" /></a></span> -->
+        <!-- <img width="32px" src="assets/img/logout.png"> -->
+
+        <span class="rigth-menu">
+          <nz-space-compact nzBlock>
+            <nz-dropdown-menu #menu>
+              <ul nz-menu>
+                <li nz-menu-item>
+                  <a (click)="openModel()">Parolamı Değiştir</a>
+                </li>
+                <li nz-menu-item>
+                  <a (click)="logout()">Oturumu Kapat</a>
+                </li>
+              </ul>
+            </nz-dropdown-menu>
+            <button nz-button nzType="primary" nz-dropdown [nzDropdownMenu]="menu">
+              <nz-icon />{{tokenInfo.name +" "+ tokenInfo.surName}}
+            </button>
+          </nz-space-compact>
+        </span>
+      </div>
+    </nz-header>
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+        <app-welcome *ngIf="isWelcome"></app-welcome>
+        <app-change-password></app-change-password>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

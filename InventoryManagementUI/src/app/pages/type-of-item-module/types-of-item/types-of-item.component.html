@@ -1,0 +1,67 @@
+<button nz-button nzType="primary" (click)="showModal()">Yeni Ürün Tipi Ekle</button>
+<nz-divider nzType="horizontal"></nz-divider>
+<nz-table nzSize="small" #editRowTable nzBordered [nzData]="listOfData" [nzPageSize]="10" nzTableLayout="fixed">
+    <thead>
+        <tr>
+            <th nzWidth="50px">ID</th>
+            <th nzWidth="90%">Tanım
+                <nz-filter-trigger [(nzVisible)]="searchVisible" [nzActive]="searchValue.length > 0" [nzDropdownMenu]="menu">
+                    <nz-icon nzType="search" />
+                </nz-filter-trigger>
+            </th>
+            <th nzWidth="250px">İşlem</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (data of editRowTable.data; track data) {
+        <tr>
+            @if (!editCache[data.id].edit) {
+            <td>{{ data.id }}</td>
+            <td>{{ data.description }}</td>
+            <td>
+                <button nzSize="small" (click)="startEdit(data.id)" nz-button nzType="default">
+                    <nz-icon nzType="edit" />
+                    Güncelle
+                </button>
+                &nbsp;
+
+                <a nzSize="small" nz-popconfirm nzPopconfirmTitle="Emin Misiniz?" (nzOnConfirm)="delete(data.id)"
+                    nz-button nzType="primary" nzDanger>Sil</a>
+            </td>
+            } @else {
+            <td>{{ data.id }}</td>
+            <td><input type="text" nz-input [(ngModel)]="editCache[data.id].data.description" /></td>
+            <td>
+                <a nzSize="small" nz-popconfirm nzPopconfirmTitle="Emin Misiniz?" (nzOnConfirm)="update(data.id)"
+                    nz-button nzType="primary">Kaydet</a>
+                &nbsp;
+                <a nzSize="small" (click)="cancelEdit(data.id)" nz-button nzType="default" nzDanger>İptal</a>
+            </td>
+            }
+        </tr>
+        }
+    </tbody>
+</nz-table>
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Yeni" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+    <ng-container *nzModalContent>
+        <form nz-form>
+            <nz-form-item>
+                <nz-form-label [nzSpan]="6" nzFor="description">Ürün Tipi Adı</nz-form-label>
+                <nz-form-control [nzSpan]="14">
+                    <input nz-input [(ngModel)]="newDescription" name="description" type="text" id="description" />
+                </nz-form-control>
+            </nz-form-item>
+        </form>
+    </ng-container>
+</nz-modal>
+
+<nz-dropdown-menu #menu="nzDropdownMenu">
+    <div class="ant-table-filter-dropdown">
+        <div class="search-box">
+            <input type="text" nz-input placeholder="Arama" [(ngModel)]="searchValue" />
+            <button nz-button nzSize="small" nzType="primary" (click)="search()" class="search-button">Ara</button>
+            <button nz-button nzSize="small" (click)="reset()">Sıfırla</button>
+        </div>
+    </div>
+</nz-dropdown-menu>

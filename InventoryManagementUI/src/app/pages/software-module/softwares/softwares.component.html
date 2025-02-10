@@ -1,0 +1,167 @@
+<button nz-button nzType="primary" (click)="showModal()">Yeni Lisans/Danışmanlık Tanımla</button>
+<nz-divider nzType="horizontal"></nz-divider>
+<nz-table nzSize="small" #editRowTable nzBordered [nzData]="listOfData" [nzPageSize]="10" nzTableLayout="fixed">
+    <thead>
+        <tr>
+            <th nzWidth="50px">ID</th>
+            <th nzWidth="15%">Yazılım/Danışmanlık
+                <nz-filter-trigger [(nzVisible)]="searchVisible" [nzActive]="searchValue.length > 0" [nzDropdownMenu]="menu">
+                    <nz-icon nzType="search" />
+                </nz-filter-trigger>
+            </th>
+            <th nzWidth="15%">Firma Email
+                <nz-filter-trigger [(nzVisible)]="searchVisible" [nzActive]="searchValue.length > 0" [nzDropdownMenu]="menu">
+                    <nz-icon nzType="search" />
+                </nz-filter-trigger>
+            </th>
+            <th nzWidth="10%">Firma Telefon
+                <nz-filter-trigger [(nzVisible)]="searchVisible" [nzActive]="searchValue.length > 0" [nzDropdownMenu]="menu">
+                    <nz-icon nzType="search" />
+                </nz-filter-trigger>
+            </th>
+            <th nzWidth="20%">Açıklama
+                <nz-filter-trigger [(nzVisible)]="searchVisible" [nzActive]="searchValue.length > 0" [nzDropdownMenu]="menu">
+                    <nz-icon nzType="search" />
+                </nz-filter-trigger>
+            </th>
+            <th nzWidth="10%">Başlangıç Tarihi
+                <nz-filter-trigger [(nzVisible)]="searchVisible" [nzActive]="searchValue.length > 0" [nzDropdownMenu]="menu">
+                    <nz-icon nzType="search" />
+                </nz-filter-trigger>
+            </th>
+            <th nzWidth="10%">Bitiş Tarihi
+                <nz-filter-trigger [(nzVisible)]="searchVisible" [nzActive]="searchValue.length > 0" [nzDropdownMenu]="menu">
+                    <nz-icon nzType="search" />
+                </nz-filter-trigger>
+            </th>
+            <th nzWidth="10%">İlgili Personel
+                <nz-filter-trigger [(nzVisible)]="searchVisible" [nzActive]="searchValue.length > 0" [nzDropdownMenu]="menu">
+                    <nz-icon nzType="search" />
+                </nz-filter-trigger>
+            </th>
+            <th nzWidth="175px">İşlem</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (data of editRowTable.data; track data) {
+        <tr>
+            @if (!editCache[data.id].edit) {
+            <td>{{ data.id }}</td>
+            <td>{{ data.name }}</td>
+            <td>{{ data.companyEmail }}</td>
+            <td>{{ data.companyPhone }}</td>
+            <td>{{ data.description}}</td>
+            <td>{{ data.lastAgreementDate | date :'dd-MM-yyyy' }}</td>
+            <td>{{ data.nextAgreementDate | date :'dd-MM-yyyy'}}</td>
+            <td>{{ data.employee.name+' '+data.employee.surName}}</td>
+            <td>
+                <button nzSize="small" (click)="startEdit(data.id)" nz-button nzType="default">
+                    <nz-icon nzType="edit" />
+                    Güncelle
+                </button>
+                &nbsp;
+                <a nzSize="small" nz-popconfirm nzPopconfirmTitle="Emin Misiniz?" (nzOnConfirm)="delete(data.id)"
+                    nz-button nzType="primary" nzDanger>Sil</a>
+            </td>
+            } @else {
+            <td>{{ data.id }}</td>
+            <td><input type="text" nz-input [(ngModel)]="editCache[data.id].data.name" /></td>
+            <td><input type="text" nz-input [(ngModel)]="editCache[data.id].data.companyEmail" /></td>
+            <td><input type="text" nz-input [(ngModel)]="editCache[data.id].data.companyPhone" /></td>
+            <td><input type="text" nz-input [(ngModel)]="editCache[data.id].data.description" /></td>
+            <td> <nz-date-picker [nzFormat]="'dd-MM-yyyy'" name="lastAgreementDate"
+                    [(ngModel)]="editCache[data.id].data.lastAgreementDate"></nz-date-picker> </td>
+            <td> <nz-date-picker [nzFormat]="'dd-MM-yyyy'" name="nextAgreementDate"
+                    [(ngModel)]="editCache[data.id].data.nextAgreementDate"></nz-date-picker> </td>
+            <td> <nz-select name="responsible" nzShowSearch nzAllowClear nzPlaceHolder="Sorumlu"
+                    [(ngModel)]="selectedResponsibleEmployeeId">
+                    @for (option of optionListResponsibleEmployees; track option) {
+                    <nz-option [nzValue]="option.id" [nzLabel]="option.name+' '+option.surName"></nz-option>
+                    }
+                </nz-select>
+            </td>
+            <td>
+                <a nzSize="small" nz-popconfirm nzPopconfirmTitle="Emin Misiniz?" (nzOnConfirm)="update(data.id)"
+                    nz-button nzType="primary">Kaydet</a>
+                &nbsp;
+                <a nzSize="small" (click)="cancelEdit(data.id)" nz-button nzType="default" nzDanger>İptal</a>
+            </td>
+            }
+        </tr>
+        }
+    </tbody>
+</nz-table>
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Yeni" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+    <ng-container *nzModalContent>
+        <form nz-form>
+
+            <nz-form-item>
+                <nz-form-label [nzSpan]="6" nzFor="name">Yazılım / Danışmanlık</nz-form-label>
+                <nz-form-control [nzSpan]="14">
+                    <input nz-input [(ngModel)]="name" name="name" type="text" id="name" />
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+                <nz-form-label [nzSpan]="6" nzFor="companyEmail">Firma Email</nz-form-label>
+                <nz-form-control [nzSpan]="14">
+                    <input nz-input [(ngModel)]="companyEmail" name="companyEmail" type="text" id="companyEmail" />
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+                <nz-form-label [nzSpan]="6" nzFor="companyPhone">Firma Telefon</nz-form-label>
+                <nz-form-control [nzSpan]="14">
+                    <input nz-input [(ngModel)]="companyPhone" name="companyPhone" type="text" id="companyPhone" />
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+                <nz-form-label [nzSpan]="6" nzFor="lastAgreementDate">Başlangıç Tarihi</nz-form-label>
+                <nz-form-control [nzSpan]="14">
+                    <nz-date-picker [nzFormat]="'dd-MM-yyyy'" name="lastAgreementDate"
+                        [(ngModel)]="lastAgreementDate"></nz-date-picker>
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+                <nz-form-label [nzSpan]="6" nzFor="nextAgreementDate">Bitiş Tarihi</nz-form-label>
+                <nz-form-control [nzSpan]="14">
+                    <nz-date-picker [nzFormat]="'dd-MM-yyyy'" name="nextAgreementDate"
+                        [(ngModel)]="nextAgreementDate"></nz-date-picker>
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+                <nz-form-label [nzSpan]="6" nzFor="description">Açıklama</nz-form-label>
+                <nz-form-control [nzSpan]="14">
+                    <textarea name="description" nz-input placeholder="Açıklama" [(ngModel)]="description"
+                        [nzAutosize]="{ minRows: 3, maxRows: 5 }"></textarea>
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+                <nz-form-label [nzSpan]="6" nzFor="gsm">Sorumlu Personel</nz-form-label>
+                <nz-form-control [nzSpan]="14">
+                    <nz-select name="brand" nzShowSearch nzAllowClear nzPlaceHolder="Marka Seçiniz"
+                        [(ngModel)]="selectedResponsibleEmployeeId">
+                        @for (option of optionListResponsibleEmployees; track option) {
+                        <nz-option [nzValue]="option.id" [nzLabel]="option.name+' '+option.surName"></nz-option>
+                        }
+                    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+        </form>
+    </ng-container>
+</nz-modal>
+
+<nz-dropdown-menu #menu="nzDropdownMenu">
+    <div class="ant-table-filter-dropdown">
+        <div class="search-box">
+            <input type="text" nz-input placeholder="Arama" [(ngModel)]="searchValue" />
+            <button nz-button nzSize="small" nzType="primary" (click)="search()" class="search-button">Ara</button>
+            <button nz-button nzSize="small" (click)="reset()">Sıfırla</button>
+        </div>
+    </div>
+</nz-dropdown-menu>

@@ -1,0 +1,45 @@
+# Fevzi TEMİZ Dockerize NodeJS API & NG ZORRO Angular UI
+version: "3.9"
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports: 
+      - '5432:5432'
+    networks:
+      docker-network:
+        ipv4_address: 10.5.0.2
+  angularproject:
+    build:
+      context: /InventoryManagementUI
+    ports:
+      - '8080:80'
+    restart: always
+    networks:
+      docker-network:
+        ipv4_address: 10.5.0.4
+  nodejsproject:
+    build:
+      context: /InventoryManagementAPI
+    environment:
+      DB_SCHEMA: postgres
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_HOST: postgres
+    depends_on:
+      - postgres
+    ports:
+      - '3000:3000'
+    restart: always
+    networks:
+      docker-network:
+        ipv4_address: 10.5.0.3
+networks:
+  docker-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.5.0.0/16
+          gateway: 10.5.0.1
