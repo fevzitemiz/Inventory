@@ -21,9 +21,9 @@ Backend Bilgileri
 Frontend Bilgileri
 
 - Angular ile geliştirildi.
-- NG Zorro UI Componentleri kullanışmıştır
+- NG Zorro UI Componentleri 
 - http://localhost:8080
-- Servisler ve Modeller için OpenApi Generator
+- Servisler ve Modeller için OpenApi Generator kullanışmıştır
 
 Database Bilgileri
 
